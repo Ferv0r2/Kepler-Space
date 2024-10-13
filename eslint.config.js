@@ -6,6 +6,7 @@ import tsEslint from 'typescript-eslint'
 import prettier from 'eslint-plugin-prettier'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginImport from 'eslint-plugin-import'
+import { fixupPluginRules } from '@eslint/compat'
 
 export default tsEslint.config(
   { ignores: ['dist'] },
@@ -26,7 +27,7 @@ export default tsEslint.config(
     },
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
-      'react-hooks': reactHooks,
+      'react-hooks': fixupPluginRules(reactHooks),
       'react-refresh': reactRefresh,
       prettier: prettier,
       import: eslintPluginImport,
